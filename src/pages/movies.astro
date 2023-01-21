@@ -1,0 +1,70 @@
+---
+const user_cookie: any = Astro.cookies.get("user");
+if (user_cookie.value !== "1") {
+  return Astro.redirect("/login");
+}
+
+import Layout from "../layouts/Layout.astro";
+
+const apiKey = "102c20b487b97ebf825b553f7e93f2a5";
+const page = 1;
+const endpoint =
+  "https://api.themoviedb.org/3/movie/popular?api_key=" +
+  apiKey +
+  "&language=en-US&page=" +
+  page;
+
+const response = await fetch(endpoint)
+  .then((r) => r.json())
+  .catch(function (error) {
+    console.log(error);
+  });
+const movies = response.results;
+console.log(response);
+const total_results = response.total_results;
+const total_pages = response.total_pages;
+---
+
+<Layout title="Movies App">
+  <h1><span class="text-gradient">Movies App</span></h1>
+  <main class="container px-5 mx-auto">
+    <ul class="flex flex-wrap -m-4 min-h-screen transition-all">
+      {
+        movies.map((movie: any) => (
+          <>
+            <li class="p-4 md:w-1/4">
+              <a
+                href={"#" + movie.id}
+                class="block bg-white h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden hover:scale-110 transition-all"
+              >
+                <span>
+                  <img
+                    src={
+                      "https://image.tmdb.org/t/p/w500" + movie.backdrop_path
+                    }
+                    alt={"Poster of " + movie.original_title}
+                  />
+                </span>
+                <div class="p-2">
+                  <span>{movie.original_title} </span>
+                  <span>({movie.release_date})</span>
+                </div>
+              </a>
+            </li>
+          </>
+        ))
+      }
+    </ul>
+    <div class="text-center p-6 mt-12">
+      <strong class="block mb-3">
+        <a href="#"> PREV</a>
+        <span> |</span>
+        <a href="#"> NEXT</a>
+      </strong>
+      <div class="text-sm">
+        Page: 1 of {total_pages} ({total_results} Results).
+      </div>
+      <strong class="block mb-3 pt-12"><a href="#">Log Out</a></strong>
+    </div>
+  </main>
+</Layout>

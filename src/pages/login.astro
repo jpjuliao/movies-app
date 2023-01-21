@@ -1,8 +1,7 @@
 ---
-// const user_cookie: any = Astro.request.headers.get("user")
 const user_cookie: any = Astro.cookies.get("user");
 if (user_cookie.value == "1") {
-  return Astro.redirect("/");
+  // return Astro.redirect("/");
 }
 
 Astro.cookies.set("user", "1");
