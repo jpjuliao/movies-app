@@ -7,12 +7,13 @@ export interface Props {
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import '../styles/main.css';
 
 const {
 	title,
 	showHeader = true,
 	logout = true,
-}: { title: any; showHeader?: any; logout?: boolean } = Astro.props;
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -30,3 +31,7 @@ const {
 		<Footer logout={logout} />
 	</body>
 </html>
+
+<style>
+
+</style>

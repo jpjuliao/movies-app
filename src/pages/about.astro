@@ -1,0 +1,31 @@
+---
+const user_cookie: any = Astro.cookies.get("user");
+if (user_cookie.value !== "1") {
+  return Astro.redirect("/login");
+}
+if (!Astro.request.url.endsWith("/")) {
+  return Astro.redirect(Astro.request.url + "/");
+}
+
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About">
+  <main class="container h-full px-5 mx-auto">
+    <h2 class="text-2xl">Thank you for visiting!</h2>
+    <p>
+      This site was created for learning porpuses with <a
+        href="https://astro.build/"
+        target="_blank">AstroJS</a
+      >, <a href="https://tailwindcss.com/" target="_blank">TailwindCSS</a> and <a
+        href="https://playwright.dev/"
+        target="_blank">Playwright</a
+      >.
+    </p>
+    <p>
+      The project is hosted in this repository: <a
+        href="https://github.com/jpjuliao/movies-app"
+        target="_blank">https://github.com/jpjuliao/movies-app</a>
+    </p>
+  </main>
+</Layout>
