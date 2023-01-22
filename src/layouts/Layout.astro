@@ -1,15 +1,18 @@
 ---
 export interface Props {
 	title: string;
+	showHeader?: boolean;
+	logout?: boolean;
 }
 
-import Header from "../components/Header.astro"
-import Footer from "../components/Footer.astro"
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
-const { title, header = true, logout = true } = Astro.props
-const pathname = Astro.url.pathname.replace(/^\/|\/$/g, "")
-
-const user_cookie: any = Astro.cookies.get("user");
+const {
+	title,
+	showHeader = true,
+	logout = true,
+}: { title: any; showHeader?: any; logout?: boolean } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -22,8 +25,8 @@ const user_cookie: any = Astro.cookies.get("user");
 		<title>{title}</title>
 	</head>
 	<body class="flex flex-col h-screen justify-between">
-		{header && <Header />}
+		{showHeader && <Header />}
 		<slot />
-		<Footer logout={logout}/>
+		<Footer logout={logout} />
 	</body>
 </html>
