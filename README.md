@@ -2,7 +2,7 @@
 
 An app to search for [Movies](https://developers.themoviedb.org/3). Created with [AstroJS](https://docs.astro.build) and [TailwindCSS](https://tailwindcss.com/).
 
-Watch the [Demo](https://jpjuliao-movies-app.netlify.app/)
+Watch the [Demo](https://jpjuliao-movies-app.netlify.app/) hosted with CI/CD in [Netlify](https://netlify.com/)
 
 ## 🧞 Commands
 
