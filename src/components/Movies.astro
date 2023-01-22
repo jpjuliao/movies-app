@@ -5,13 +5,11 @@ export interface Props {
 
 const { page = "1" } = Astro.props;
 
-const endpoint =
-  "https://api.themoviedb.org/3/movie/popular?api_key=" +
-  import.meta.env.SECRET_KEY +
-  "&language=en-US&page=" +
-  page;
-
-const response = await fetch(endpoint)
+const response = await fetch(
+  `https://api.themoviedb.org/3/movie/popular?api_key=${
+    import.meta.env.SECRET_KEY
+  }&language=en-US&page=${page}`
+)
   .then((r) => r.json())
   .catch(function (error) {
     console.log(error);
@@ -52,14 +50,52 @@ const total_pages = response.total_pages;
     {
       page !== "1" ? (
         <>
-          <a href={"/movies/" + (parseInt(page) - 1)}> PREV</a>
+          <a href={"/movies/" + (parseInt(page) - 1)}>
+            <span class="inline-block  mb-[-.33rem]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
+                />
+              </svg>
+            </span>{" "}
+            PREV{" "}
+          </a>
           <span> |</span>
         </>
       ) : null
     }
     {
       page !== total_pages ? (
-        <a href={"/movies/" + (parseInt(page) + 1)}> NEXT</a>
+        <a href={"/movies/" + (parseInt(page) + 1)}>
+          {" "}
+          NEXT{" "}
+          <span class="inline-block mb-[-.33rem]">
+            {" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </span>
+        </a>
       ) : null
     }
   </strong>
