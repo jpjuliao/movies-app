@@ -1,0 +1,12 @@
+---
+const { copyright = "Site created by Juan Pablo Juliao" } = Astro.props;
+---
+
+<footer>
+  <div class="text-center py-2 px-2">
+    <strong class="block mb-3 pt-12"><a href="#">Log Out</a></strong>
+  </div>
+  <div class="bg-gray-200 p-3 mt-2 text-center text-xs opacity-50">
+    {copyright} © {new Date().getFullYear()}
+  </div>
+</footer>

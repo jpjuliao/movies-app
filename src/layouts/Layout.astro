@@ -3,8 +3,13 @@ export interface Props {
 	title: string;
 }
 
-const { title } = Astro.props
+import Header from "../components/Header.astro"
+import Footer from "../components/Footer.astro"
+
+const { title, header = true } = Astro.props
 const pathname = Astro.url.pathname.replace(/^\/|\/$/g, "")
+
+const user_cookie: any = Astro.cookies.get("user");
 ---
 
 <!DOCTYPE html>
@@ -16,10 +21,9 @@ const pathname = Astro.url.pathname.replace(/^\/|\/$/g, "")
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
 	</head>
-	<body>
+	<body class="flex flex-col h-screen justify-between">
+		{header && <Header />}
 		<slot />
-		<h1>The current URL is: {Astro.url}</h1>
-		<h1>The current URL pathname is: {pathname}</h1>
-		<h1>The current URL origin is: {Astro.url.origin}</h1>
+		<Footer />
 	</body>
 </html>

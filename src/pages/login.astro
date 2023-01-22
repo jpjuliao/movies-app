@@ -1,7 +1,7 @@
 ---
 const user_cookie: any = Astro.cookies.get("user");
 if (user_cookie.value == "1") {
-  // return Astro.redirect("/");
+  return Astro.redirect("/");
 }
 
 Astro.cookies.set("user", "1");
@@ -9,7 +9,7 @@ Astro.cookies.set("user", "1");
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Welcome to Astro." header={false}>
   <section class="h-screen">
     <div class="px-6 h-full text-gray-800">
       <div

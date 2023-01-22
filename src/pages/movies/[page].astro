@@ -5,5 +5,12 @@ if (user_cookie.value !== "1") {
 }
 
 const { page } = Astro.params;
+
+import Movies from "../../components/Movies.astro"
+import Layout from "../../layouts/Layout.astro";
 ---
-{page}
+<Layout title="Movies App">
+	<main class="container px-5 mx-auto">
+    <Movies page={page || "1"}/>
+	</main>
+</Layout>
