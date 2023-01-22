@@ -49,8 +49,19 @@ const total_pages = response.total_pages;
 </ul>
 <div class="text-center p-6 mt-12">
   <strong class="block mb-3">
-    {page !== "1" ? <a href={"./movies/" + (parseInt(page) - 1)}> PREV</a> <span> |</span>: null}
-    {page !== total_pages ? <a href={"./movies/" + (parseInt(page) + 1)}> NEXT</a> : null}
+    {
+      page !== "1" ? (
+        <>
+          <a href={"/movies/" + (parseInt(page) - 1)}> PREV</a>
+          <span> |</span>
+        </>
+      ) : null
+    }
+    {
+      page !== total_pages ? (
+        <a href={"/movies/" + (parseInt(page) + 1)}> NEXT</a>
+      ) : null
+    }
   </strong>
   <div class="text-sm">
     Page: {page} of {total_pages} ({total_results} Results).
