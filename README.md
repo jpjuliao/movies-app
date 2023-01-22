@@ -1,6 +1,6 @@
 # Welcome to Movies App
 
-An app to search for [Movies](https://developers.themoviedb.org/3). Created with [AstroJS](https://docs.astro.build) and TailwindCSS.
+An app to search for [Movies](https://developers.themoviedb.org/3). Created with [AstroJS](https://docs.astro.build) and [TailwindCSS](https://tailwindcss.com/).
 
 Watch the [Demo](https://jpjuliao-movies-app.netlify.app/)
 
@@ -19,4 +19,8 @@ All commands are run from the root of the project, from a terminal:
 
 ## Api Key
 
-Add your SECRET_KEY in the .env file.
+Create an API Key in [The Movie DB](https://developers.themoviedb.org/3/) and add it to the environment variable "SECRET_KEY".
+
+```bash
+cp .env-example .env
+```
