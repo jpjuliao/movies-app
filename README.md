@@ -4,6 +4,8 @@ An app to search for [Movies](https://developers.themoviedb.org/3). Created with
 
 Watch the [Demo](https://jpjuliao-movies-app.netlify.app/) hosted with CI/CD in [Netlify](https://netlify.com/)
 
+![Site demo](./site-demo.gif)
+
 ## 🧞 Commands
 
 All commands are run from the root of the project, from a terminal:
