@@ -1,6 +1,7 @@
 ---
-import heartIconURL from "../assets/icon-heart.svg"
-import MovieInfo from "./MovieDetailInfo.astro"
+import heartIconURL from "../assets/icon-heart.svg";
+import solidHeartIconURL from "../assets/icon-heart-solid.svg";
+import MovieInfo from "./MovieDetailInfo.astro";
 
 export interface Props {
   pid: string;
@@ -21,16 +22,11 @@ const response = await fetch(endpoint)
   });
 
 const movie = response;
-
 ---
 
 <div class="px-6 text-gray-800">
-  <div
-    class="flex xl:justify-center lg:justify-between h-full g-6"
-  >
-    <div
-      class="basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 "
-    >
+  <div class="flex xl:justify-center lg:justify-between h-full g-6">
+    <div class="basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12">
       <img
         class="w-full"
         src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
@@ -39,13 +35,18 @@ const movie = response;
     </div>
     <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 break-words">
       <h2 class="text-5xl font-bold">{movie.original_title}</h2>
-      <a href="#" class="block py-4" data-fav={movie.id}>
-        <img src={heartIconURL} alt="Heart icon" class="w-6"/>
+      <a
+        href="#"
+        class="block my-4 relative"
+        data-fav={movie.id}
+        data-fav-title={movie.original_title}
+        data-fav-thumb={movie.poster_path}
+      >
+        <img src={heartIconURL} alt="Heart icon" class="w-6" />
+        <img src={solidHeartIconURL} alt="Heart icon" class="w-6 absolute hidden top-0 left-0" />
       </a>
       <p class="py-4">{movie.overview}</p>
       <MovieInfo movie={movie} />
     </div>
   </div>
 </div>
-
-<!-- {JSON.stringify(movie)} -->

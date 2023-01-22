@@ -1,0 +1,39 @@
+---
+const user_cookie: any = Astro.cookies.get("user");
+if (user_cookie.value !== "1") {
+  return Astro.redirect("/login");
+}
+if (!Astro.request.url.endsWith("/")) {
+  return Astro.redirect(Astro.request.url + "/");
+}
+
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="About">
+  <main class="container h-full px-5 mx-auto">
+    <h2>Favorites</h2>
+    <div id="favorites-list"></div>
+  </main>
+</Layout>
+
+<script>
+  addEventListener("DOMContentLoaded", (e) => {
+    const root = document.getElementById("favorites-list");
+
+    if (!root) return
+
+    let favs = localStorage.getItem("favs");
+    let favs_arr = favs ? JSON.parse(favs) : false;
+    let HTML = "<ul>";
+
+    for (const id in favs_arr) {
+      let title = favs_arr[id][0];
+      HTML += `<li data-fav="${id}"><a href="/movie/${id}">${title}</a></li>`;
+    }
+
+    HTML += "</ul>";
+
+    root.innerHTML = HTML;
+  });
+</script>
