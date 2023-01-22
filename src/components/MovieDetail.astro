@@ -39,7 +39,7 @@ const movie = response;
     </div>
     <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 break-words">
       <h2 class="text-5xl font-bold">{movie.original_title}</h2>
-      <a href="#" class="block py-4">
+      <a href="#" class="block py-4" data-fav={movie.id}>
         <img src={heartIconURL} alt="Heart icon" class="w-6"/>
       </a>
       <p class="py-4">{movie.overview}</p>

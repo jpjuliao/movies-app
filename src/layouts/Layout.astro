@@ -6,14 +6,10 @@ export interface Props {
 }
 
 import Header from "../components/Header.astro";
-import Footer from "../components/Footer.astro";
-import '../styles/main.css';
+import favs_arrter from "../components/favs_arrter.astro";
+import "../styles/main.css";
 
-const {
-	title,
-	showHeader = true,
-	logout = true,
-} = Astro.props;
+const { title, showHeader = true, logout = true } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -28,10 +24,34 @@ const {
 	<body class="flex flex-col h-screen justify-between">
 		{showHeader && <Header />}
 		<slot />
-		<Footer logout={logout} />
+		<favs_arrter logout={logout}></favs_arrter>
 	</body>
 </html>
 
-<style>
+<script>
+	addEventListener("DOMContentLoaded", (e) => {
+		const fav_btns = document.querySelectorAll("[data-fav]");
 
-</style>
+		fav_btns.forEach((button) => {
+			button.addEventListener("click", (e) =>
+				handleFavClick(e.target as HTMLLinkElement)
+			);
+		});
+	});
+
+	const handleFavClick = (el: HTMLLinkElement) => {
+		const data_fav: number = parseInt(el.getAttribute("data-fav") || "");
+		console.log(data_fav);
+
+		let favs = localStorage.getItem("favs");
+		let favs_arr = favs ? JSON.parse(favs) : false;
+
+		if (favs_arr) {
+			if (favs_arr.indexOf(data_fav) == -1) favs_arr.push(data_fav);
+			console.log(favs_arr);
+			localStorage.setItem("favs", JSON.stringify(favs_arr));
+		} else {
+			localStorage.setItem("favs", JSON.stringify([data_fav]));
+		}
+	};
+</script>
