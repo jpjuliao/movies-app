@@ -3,6 +3,9 @@ const user_cookie: any = Astro.cookies.get("user");
 if (user_cookie.value !== "1") {
 	return Astro.redirect("/login");
 }
+if (!Astro.request.url.endsWith("/")) {
+  return Astro.redirect(Astro.request.url + "/");
+}
 
 import Layout from "../layouts/Layout.astro";
 

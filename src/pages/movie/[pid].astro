@@ -7,13 +7,14 @@ if (!Astro.request.url.endsWith("/")) {
   return Astro.redirect(Astro.request.url + "/");
 }
 
-import Layout from "../layouts/Layout.astro";
-import Movies from "../components/Movies.astro";
+import Layout from "../../layouts/Layout.astro";
+import Movie from "../../components/Movie.astro";
+
+const { pid } = Astro.params
 ---
 
 <Layout title="Movies App">
-  <main class="container px-5 mx-auto">
-    <!-- {Astro.request.url.slice(-1)} -->
-    <Movies />
+  <main class="container px-5 mx-auto h-full">
+    <Movie pid={pid} />
   </main>
 </Layout>

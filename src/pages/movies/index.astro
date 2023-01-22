@@ -1,5 +1,5 @@
 ---
-const user_cookie: any = Astro.cookies.get("user")
+const user_cookie: any = Astro.cookies.get("user");
 if (user_cookie.value !== "1") {
   return Astro.redirect("/login");
 }
@@ -7,13 +7,13 @@ if (!Astro.request.url.endsWith("/")) {
   return Astro.redirect(Astro.request.url + "/");
 }
 
-const { page } = Astro.params;
-
-import Movies from "../../components/Movies.astro"
 import Layout from "../../layouts/Layout.astro";
+import Movies from "../../components/Movies.astro";
 ---
+
 <Layout title="Movies App">
-	<main class="container px-5 mx-auto">
-    <Movies page={page || "1"}/>
-	</main>
+  <main class="container px-5 mx-auto">
+    <!-- {Astro.request.url.slice(-1)} -->
+    <Movies />
+  </main>
 </Layout>

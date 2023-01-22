@@ -6,7 +6,7 @@ export interface Props {
 import Header from "../components/Header.astro"
 import Footer from "../components/Footer.astro"
 
-const { title, header = true } = Astro.props
+const { title, header = true, logout = true } = Astro.props
 const pathname = Astro.url.pathname.replace(/^\/|\/$/g, "")
 
 const user_cookie: any = Astro.cookies.get("user");
@@ -24,6 +24,6 @@ const user_cookie: any = Astro.cookies.get("user");
 	<body class="flex flex-col h-screen justify-between">
 		{header && <Header />}
 		<slot />
-		<Footer />
+		<Footer logout={logout}/>
 	</body>
 </html>

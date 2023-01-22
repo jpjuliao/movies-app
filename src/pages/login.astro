@@ -4,12 +4,12 @@ if (user_cookie.value == "1") {
   return Astro.redirect("/");
 }
 
-Astro.cookies.set("user", "1");
+// Astro.cookies.set("user", "1");
 
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro." header={false}>
+<Layout title="Welcome to Astro." header={false} logout={false}>
   <section class="h-screen">
     <div class="px-6 h-full text-gray-800">
       <div
@@ -25,11 +25,13 @@ import Layout from "../layouts/Layout.astro";
           />
         </div>
         <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
-          <form >
+          <form action="/login-auth">
             <div class="mb-6">
               <input
                 id="email"
                 type="email"
+                minlength="3"
+                required
                 placeholder="Email address"
                 class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
               />
@@ -38,6 +40,8 @@ import Layout from "../layouts/Layout.astro";
             <div class="mb-6">
               <input
                 id="password"
+                minlength="4"
+                required
                 class="form-control block w-full px-4 py-2 text-xl font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                 placeholder="Password"
                 type="password"
