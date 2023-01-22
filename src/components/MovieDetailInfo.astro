@@ -1,0 +1,35 @@
+---
+import heartIconURL from "../assets/icon-heart.svg";
+
+const {movie} = Astro.props
+---
+
+<h3 class="text-lg font-bold">Information</h3>
+<ul class="text-sm leading-6">
+  <li><strong>Adult:</strong> {JSON.stringify(movie.adult)}</li>
+  <li><strong>Genres:</strong> {JSON.stringify(movie.genres)}</li>
+  <li><strong>IMDB ID:</strong> {movie.imdb_id}</li>
+  <li><strong>Original Language:</strong> {movie.original_language}</li>
+  <li><strong>Original Title:</strong> {movie.original_title}</li>
+  <li><strong>Homepage:</strong> {movie.homepage}</li>
+  <li><strong>Popularity:</strong> {movie.popularity}</li>
+  <li>
+    <strong>Production Companies:</strong>
+    {JSON.stringify(movie.production_companies)}
+  </li>
+  <li>
+    <strong>Production Countries:</strong>
+    {JSON.stringify(movie.production_countries)}
+  </li>
+  <li><strong>Release Date:</strong> {movie.release_date}</li>
+  <li><strong>Runtime:</strong> {movie.runtime}</li>
+  <li>
+    <strong>Spoken Languages:</strong>
+    {JSON.stringify(movie.spoken_languages)}
+  </li>
+  <li><strong>Status:</strong> {movie.status}</li>
+  <li><strong>Tagline:</strong> {movie.tagline}</li>
+  <li><strong>Video:</strong> {movie.video}</li>
+  <li><strong>Vote Average:</strong> {movie.vote_average}</li>
+  <li><strong>Vote Count:</strong> {movie.vote_count}</li>
+</ul>

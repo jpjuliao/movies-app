@@ -1,5 +1,6 @@
 ---
 import heartIconURL from "../assets/icon-heart.svg"
+import MovieInfo from "./MovieDetailInfo.astro"
 
 export interface Props {
   pid: string;
@@ -23,12 +24,12 @@ const movie = response;
 
 ---
 
-<div class="px-6 h-full text-gray-800">
+<div class="px-6 text-gray-800">
   <div
-    class="flex xl:justify-center lg:justify-between justify-center items-center h-full g-6"
+    class="flex xl:justify-center lg:justify-between h-full g-6"
   >
     <div
-      class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
+      class="basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 "
     >
       <img
         class="w-full"
@@ -36,41 +37,13 @@ const movie = response;
         alt={"Poster of " + movie.original_title}
       />
     </div>
-    <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0 break-words">
+    <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 break-words">
       <h2 class="text-5xl font-bold">{movie.original_title}</h2>
       <a href="#" class="block py-4">
         <img src={heartIconURL} alt="Heart icon" class="w-6"/>
       </a>
       <p class="py-4">{movie.overview}</p>
-      <h3 class="text-lg font-bold">Information</h3>
-      <ul class="text-sm leading-6">
-        <li><strong>Adult:</strong> {JSON.stringify(movie.adult)}</li>
-        <li><strong>Genres:</strong> {JSON.stringify(movie.genres)}</li>
-        <li><strong>IMDB ID:</strong> {movie.imdb_id}</li>
-        <li><strong>Original Language:</strong> {movie.original_language}</li>
-        <li><strong>Original Title:</strong> {movie.original_title}</li>
-        <li><strong>Homepage:</strong> {movie.homepage}</li>
-        <li><strong>Popularity:</strong> {movie.popularity}</li>
-        <li>
-          <strong>Production Companies:</strong>
-          {JSON.stringify(movie.production_companies)}
-        </li>
-        <li>
-          <strong>Production Countries:</strong>
-          {JSON.stringify(movie.production_countries)}
-        </li>
-        <li><strong>Release Date:</strong> {movie.release_date}</li>
-        <li><strong>Runtime:</strong> {movie.runtime}</li>
-        <li>
-          <strong>Spoken Languages:</strong>
-          {JSON.stringify(movie.spoken_languages)}
-        </li>
-        <li><strong>Status:</strong> {movie.status}</li>
-        <li><strong>Tagline:</strong> {movie.tagline}</li>
-        <li><strong>Video:</strong> {movie.video}</li>
-        <li><strong>Vote Average:</strong> {movie.vote_average}</li>
-        <li><strong>Vote Count:</strong> {movie.vote_count}</li>
-      </ul>
+      <MovieInfo movie={movie} />
     </div>
   </div>
 </div>
