@@ -1,4 +1,6 @@
 ---
+import heartIconURL from "../assets/icon-heart.svg"
+
 export interface Props {
   pid: string;
 }
@@ -18,11 +20,12 @@ const response = await fetch(endpoint)
   });
 
 const movie = response;
+
 ---
 
 <div class="px-6 h-full text-gray-800">
   <div
-    class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
+    class="flex xl:justify-center lg:justify-between justify-center items-center h-full g-6"
   >
     <div
       class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
@@ -33,23 +36,10 @@ const movie = response;
         alt={"Poster of " + movie.original_title}
       />
     </div>
-    <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
+    <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0 break-words">
       <h2 class="text-5xl font-bold">{movie.original_title}</h2>
-      <a href="#" class="block py-4"
-        ><svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-          ></path>
-        </svg>
+      <a href="#" class="block py-4">
+        <img src={heartIconURL} alt="Heart icon" class="w-6"/>
       </a>
       <p class="py-4">{movie.overview}</p>
       <h3 class="text-lg font-bold">Information</h3>

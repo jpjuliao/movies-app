@@ -8,13 +8,13 @@ if (!Astro.request.url.endsWith("/")) {
 }
 
 import Layout from "../../layouts/Layout.astro";
-import Movie from "../../components/Movie.astro";
+import Movie from "../../components/MovieDetail.astro";
 
 const { pid } = Astro.params
 ---
 
 <Layout title="Movies App">
   <main class="container px-5 mx-auto h-full">
-    <Movie pid={pid} />
+    <Movie pid={pid || ""} />
   </main>
 </Layout>
