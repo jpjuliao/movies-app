@@ -7,22 +7,37 @@ if (user_cookie.value == "1") {
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="Welcome to Astro." showHeader={false} showLogout={false} showLoader={false}>
+<Layout
+  title="Welcome to Astro."
+  showHeader={false}
+  showLogout={false}
+  showLoader={false}
+>
+  <header>
+    <nav
+      class="flex items-center justify-center flex-wrap bg-blue-800 p-6 mb-12 text-center md:text-left"
+    >
+      <div
+        class="flex items-center flex-shrink-0 text-white md:mr-6 md:mx-0 mx-auto"
+      >
+        <a href="/">
+          <span class="font-semibold text-xl tracking-tight text-white"
+            >MOVINDEX</span
+          ></a
+        >
+      </div>
+    </nav>
+  </header>
   <section class="h-screen">
     <div class="px-6 h-full text-gray-800">
       <div
-        class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full g-6"
+        class="flex xl:justify-center lg:justify-between justify-center items-center flex-wrap h-full"
       >
-        <div
-          class="grow-0 shrink-1 md:shrink-0 basis-auto xl:w-6/12 lg:w-6/12 md:w-9/12 mb-12 md:mb-0"
-        >
-          <img
-            src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
-            class="w-full"
-            alt="Sample image"
-          />
-        </div>
-        <div class="xl:ml-20 xl:w-5/12 lg:w-5/12 md:w-8/12 mb-12 md:mb-0">
+        <div class="">
+          <div class="text-center">
+            <h2>Welcome</h2>
+            <p class="pb-6 text-xl"> please login or register to continue.</p>
+          </div>
           <form action="/login-auth">
             <div class="mb-6">
               <input
