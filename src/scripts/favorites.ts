@@ -2,9 +2,11 @@ export default function favorites() {
   const fav_btns = document.querySelectorAll("[data-fav]");
 
   let favs = localStorage.getItem("favs");
+
   if (!favs) {
     localStorage.setItem("favs", JSON.stringify({}))
   }
+
   let favs_arr = favs ? JSON.parse(favs) : {};
 
   /**
@@ -13,10 +15,10 @@ export default function favorites() {
    */
   const updateStates = (btn: Element) => {
     const id = btn.getAttribute("data-fav") || "";
-    if (typeof favs_arr[id] !== "undefined") {
+    if (typeof favs_arr[id] !== "undefined"
+      && typeof btn.children[1] !== "undefined") {
       btn.children[1].classList.remove('hidden');
     }
-    console.log(id, favs_arr, typeof favs_arr[id]);
   }
 
   /**
@@ -43,28 +45,21 @@ export default function favorites() {
     const title: string = el.getAttribute("data-fav-title") || "";
     const thumb: string = el.getAttribute("data-fav-thumb") || "";
 
-    console.log(id, title, thumb);
     if (!id) return;
 
     if (!favs_arr[id]) {
       favs_arr[id] = [title, thumb];
-      el.children[1].classList.remove('hidden');
+      if (typeof el.children[1] !== "undefined") {
+        el.children[1].classList.remove('hidden');
+      }
     } else {
       delete favs_arr[id]
-      el.children[1].classList.add('hidden');
+      if (typeof el.children[1] !== "undefined") {
+        el.children[1].classList.add('hidden');
+      }
     }
     localStorage.setItem("favs", JSON.stringify(favs_arr));
-    // } else {
-    //   el.children[1].classList.add('hidden');
-    //   localStorage.setItem(
-    //     "favs",
-    //     JSON.stringify({
-    //       [id]: [title, thumb],
-    //     })
-    //   );
-    // }
 
-    console.log(favs_arr);
   }
 
   // Initialize

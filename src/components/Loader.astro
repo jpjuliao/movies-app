@@ -1,0 +1,16 @@
+---
+import LoaderURL from "../assets/Loader.svg";
+---
+
+<div
+  class="loader p-10 text-center text-2xl flex justify-center align-middle h-screen"
+>
+  <img src={LoaderURL} alt="Loader animation" class="inline-block w-[25vw]" />
+</div>
+
+<script>
+  addEventListener("DOMContentLoaded", () => {
+    const loader = document.querySelector(".loader");
+    loader && loader.classList.add("hidden");
+  });
+</script>

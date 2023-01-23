@@ -2,14 +2,16 @@
 export interface Props {
 	title: string;
 	showHeader?: boolean;
-	logout?: boolean;
+	showLogout?: boolean;
+	showLoader?: boolean;
 }
 
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
+import Loader from "../components/Loader.astro";
 import "../styles/main.css";
 
-const { title, showHeader = true, logout = true } = Astro.props;
+const { title, showHeader = true, showLogout = true, showLoader = true } = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -23,8 +25,9 @@ const { title, showHeader = true, logout = true } = Astro.props;
 	</head>
 	<body class="flex flex-col h-screen justify-between">
 		{showHeader && <Header />}
+		{showLoader && <Loader />}
 		<slot />
-		<Footer logout={logout} />
+		<Footer showLogout={showLogout} />
 	</body>
 </html>
 

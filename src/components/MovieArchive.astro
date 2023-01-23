@@ -1,0 +1,33 @@
+---
+export interface Props {
+  page?: any;
+}
+
+import MovieItem from "./MovieArchiveItem.astro";
+import Pagination from "./Pagination.astro";
+
+const { page = 1 } = Astro.props;
+
+const response = await fetch(
+  `https://api.themoviedb.org/3/movie/popular?api_key=${
+    import.meta.env.SECRET_KEY
+  }&language=en-US&page=${page}`
+)
+  .then((res) => res.json())
+  .catch((err) => {
+    console.log(err);
+  })
+
+const movies = response.results;
+const total_results = response.total_results;
+const total_pages = response.total_pages;
+---
+
+<ul class="flex flex-wrap -m-4 min-h-screen transition-all justify-center">
+  {movies.map((movie: any) => <MovieItem movie={movie} />)}
+</ul>
+<Pagination
+  page={page}
+  total_pages={total_pages}
+  total_results={total_results}
+/>

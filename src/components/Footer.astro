@@ -1,11 +1,16 @@
 ---
-const { copyright = "Site created by Juan Pablo Juliao", logout = false } =
+export interface props {
+  copyright?: string,
+  showLogout?: boolean,
+}
+
+const { copyright = "Site created by Juan Pablo Juliao", showLogout = false } =
   Astro.props;
 ---
 
 <footer>
   {
-    logout && (
+    showLogout && (
       <div class="text-center py-2 px-2">
         <strong class="block mb-3 pt-12">
           <a href="/logout">

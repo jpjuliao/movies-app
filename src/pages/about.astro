@@ -10,7 +10,7 @@ if (!Astro.request.url.endsWith("/")) {
 import Layout from "../layouts/Layout.astro";
 ---
 
-<Layout title="About">
+<Layout title="About" showLoader={false}>
   <main class="container h-full px-5 mx-auto">
     <h2>Thank you for visiting!</h2>
     <p>

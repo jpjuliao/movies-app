@@ -8,12 +8,11 @@ if (!Astro.request.url.endsWith("/")) {
 }
 
 import Layout from "../../layouts/Layout.astro";
-import Movies from "../../components/MovieList.astro";
+import MovieArchive from "../../components/MovieArchive.astro";
 ---
 
 <Layout title="Movies App">
   <main class="container px-5 mx-auto">
-    <!-- {Astro.request.url.slice(-1)} -->
-    <Movies {}/>
+    <MovieArchive />
   </main>
 </Layout>

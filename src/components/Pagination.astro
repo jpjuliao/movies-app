@@ -1,0 +1,69 @@
+---
+export interface Props {
+  page : number,
+  total_pages : number,
+  total_results : number,
+}
+
+const { page, total_pages, total_results } = Astro.props
+const curr_page = typeof page !== "number" ? parseInt(page) : page
+
+---
+<div class="text-center p-6 mt-12">
+  <strong class="block mb-3">
+    {
+      page !== 1 ? (
+        <>
+          <a href={"/movies/" + (curr_page - 1)}>
+            <span class="inline-block  mb-[-.33rem]">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="w-6 h-6"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M18.75 19.5l-7.5-7.5 7.5-7.5m-6 15L5.25 12l7.5-7.5"
+                />
+              </svg>
+            </span>{" "}
+            PREV{" "}
+          </a>
+          <span> |</span>
+        </>
+      ) : null
+    }
+    {
+      page !== total_pages ? (
+        <a href={"/movies/" + (curr_page + 1)}>
+          {" "}
+          NEXT{" "}
+          <span class="inline-block mb-[-.33rem]">
+            {" "}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M11.25 4.5l7.5 7.5-7.5 7.5m-6-15l7.5 7.5-7.5 7.5"
+              />
+            </svg>
+          </span>
+        </a>
+      ) : null
+    }
+  </strong>
+  <div class="text-sm">
+    Page: {page} of {total_pages} ({total_results} Results).
+  </div>
+</div>
